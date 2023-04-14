@@ -30,7 +30,7 @@
     "reader",
     { fps: 10, qrbox: {width: 250, height: 250} },
     /* verbose= */ false);
-    // html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+    html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
   }
 
