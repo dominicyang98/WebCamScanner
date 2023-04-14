@@ -1,5 +1,5 @@
 <template>
-  <div id="header" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER</div>
+  <div id="header" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST</div>
   <div id="reader" width="600px"></div>
   
 </template>
