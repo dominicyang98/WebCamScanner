@@ -6,6 +6,14 @@
 </template>
 
 <script>
+
+  export default {
+      mounted(){
+          const script = document.createElement('script')
+          script.src = './clientConsole.js'
+          document.head.appendChild(script)
+      }
+  }
   // To use Html5QrcodeScanner (more info below)
   import {Html5QrcodeScanner} from "html5-qrcode";
  // var resultContainer = document.getElementById('reader')
