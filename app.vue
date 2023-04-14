@@ -12,7 +12,7 @@
 
   // To use Html5Qrcode (more info below)
   // import {Html5Qrcode} from "html5-qrcode";
-  var resultContainer = document.getElementById('result');
+  // var resultContainer = document.getElementById('result');
 
   function onScanSuccess(decodedText, decodedResult) {
     // handle the scanned code as you like, for example:
