@@ -1,6 +1,7 @@
 <template>
   <div id="header" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST</div>
   <div id="reader" width="600px"></div>
+  <div id="result" ></div>
   
 </template>
 
@@ -11,6 +12,7 @@
 
   // To use Html5Qrcode (more info below)
   // import {Html5Qrcode} from "html5-qrcode";
+  var resultContainer = document.getElementById('result');
 
   function onScanSuccess(decodedText, decodedResult) {
     // handle the scanned code as you like, for example:
