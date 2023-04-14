@@ -7,7 +7,7 @@
 <script>
   // To use Html5QrcodeScanner (more info below)
   import {Html5QrcodeScanner} from "html5-qrcode";
-  var resultContainer = document.getElementById('reader')
+ // var resultContainer = document.getElementById('reader')
 
   // To use Html5Qrcode (more info below)
   // import {Html5Qrcode} from "html5-qrcode";
@@ -30,7 +30,7 @@
     "reader",
     { fps: 10, qrbox: {width: 250, height: 250} },
     /* verbose= */ false);
-    html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+    // html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
   }
 
