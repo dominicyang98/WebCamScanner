@@ -2,10 +2,15 @@
   <div id="header" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST</div>
   <div id="reader" width="600px"></div>
 
-  
 </template>
 
 <script>
+
+  const consoleOutput = window.consoleOutput || {};
+
+  var message = 'This is a unique message.';
+
+
 
   export default {
       mounted(){
@@ -24,8 +29,11 @@
 
   function onScanSuccess(decodedText, decodedResult) {
     // handle the scanned code as you like, for example:
-    console.log(`Code matched = ${decodedText}`, decodedResult);
-
+      if (!consoleOutput[message]){
+          console.log(`Code matched = ${decodedText}`, decodedResult);
+          consoleOutput[message] = true;
+          message = decodedResult;
+      }
   }
 
   function onScanFailure(error) {
