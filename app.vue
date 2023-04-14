@@ -30,9 +30,10 @@
   function onScanSuccess(decodedText, decodedResult) {
     // handle the scanned code as you like, for example:
       if (!consoleOutput[message]){
+          message = decodedResult;
           console.log(`Code matched = ${decodedText}`, decodedResult);
           consoleOutput[message] = true;
-          message = decodedResult;
+
       }
   }
 
