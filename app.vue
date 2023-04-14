@@ -1,5 +1,5 @@
 <template>
-  <div id="header" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST11</div>
+  <div id="header" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST</div>
   <div id="reader" width="600px"></div>
   
 </template>
@@ -7,13 +7,15 @@
 <script>
   // To use Html5QrcodeScanner (more info below)
   import {Html5QrcodeScanner} from "html5-qrcode";
+  var resultContainer = document.getElementById('reader')
 
   // To use Html5Qrcode (more info below)
-  import {Html5Qrcode} from "html5-qrcode";
+  // import {Html5Qrcode} from "html5-qrcode";
 
   function onScanSuccess(decodedText, decodedResult) {
     // handle the scanned code as you like, for example:
     console.log(`Code matched = ${decodedText}`, decodedResult);
+    resultContainer.innerHTML += '<div> ${decodedResult}</div>';
   }
 
   function onScanFailure(error) {
@@ -23,7 +25,6 @@
   }
 
   if (process.client){
-    //test
 
     let html5QrcodeScanner = new Html5QrcodeScanner(
     "reader",
