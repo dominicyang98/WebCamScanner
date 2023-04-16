@@ -32,9 +32,10 @@
       if (!consoleOutput[message]) {
           message = decodedResult;
           consoleOutput[message] = true;
-          console.log(message);
           this.targetObject = await findInfoDetails(message);
-          console.log(this.targetObject);
+          console.log(`Code matched = ${decodedText}`, this.targetObject);
+
+
       }
   }
 
