@@ -44,7 +44,7 @@
     console.warn(`Code scan error = ${error}`);
   }
 
-  async function findInfoDetails() {
+  async function findInfoDetails(id) {
       try {
           const response = await this.$axios.$get('/inventory-details.json')
           const targetObject = response.find(obj => obj.id === id);
