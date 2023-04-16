@@ -32,7 +32,7 @@
       if (!consoleOutput[message]){
           message = decodedResult;
           consoleOutput[message] = true;
-          console.log(`Code matched = ${decodedText}`, decodedResult);
+          console.log(`Code matched11 = ${decodedText}`, decodedResult);
       }
   }
 
