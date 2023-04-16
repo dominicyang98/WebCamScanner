@@ -27,12 +27,14 @@
   // import {Html5Qrcode} from "html5-qrcode";
 
 
-  function onScanSuccess(decodedText, decodedResult) {
-    // handle the scanned code as you like, for example:
-      if (!consoleOutput[message]){
+  async function onScanSuccess(decodedText, decodedResult) {
+      // handle the scanned code as you like, for example:
+      if (!consoleOutput[message]) {
           message = decodedResult;
           consoleOutput[message] = true;
-          console.log(`Code matched11 = ${decodedText}`, decodedResult);
+          console.log(`Code matched = ${decodedText}`, message);
+          this.targetObject = await findInfoDetails(message);
+          console.log(this.targetObject);
       }
   }
 
@@ -41,6 +43,18 @@
     // for example:
     console.warn(`Code scan error = ${error}`);
   }
+
+  async function findInfoDetails() {
+      try {
+          const response = await this.$axios.$get('/inventory-details.json')
+          const targetObject = response.find(obj => obj.id === id);
+          return targetObject;
+      } catch (error) {
+          console.error(error)
+          return null;
+      }
+  }
+
 
   if (process.client){
 
