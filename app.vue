@@ -33,7 +33,7 @@
           message = decodedResult;
           consoleOutput[message] = true;
           this.targetObject = await findInfoDetails(message);
-          console.log(`Code matched = ${decodedText}`, this.targetObject);
+          console.log(`Code matched = ${decodedText}`, message);
 
 
       }
