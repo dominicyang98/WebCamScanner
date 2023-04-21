@@ -1,17 +1,22 @@
 <template>
-    <div id="header" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST111</div>
-    <div id="header1" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST1</div>
-    <!-- <div id="result"> Details:
-        <li v-if="foundItem">{{ foundItem.Category }} - {{ foundItem.Manufacturer}} </li>
-        <li v-else> Item not found </li></div> -->
-    <div id="reader" width="600px"></div>
+    <div id="header" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST</div>
+    <div id="reader" width="400px"></div>
+    <div id="result" style="background-color:lightblue; text-align:center ;">
+        <p>Item found:</p>
+        <ul>
+            <li v-if="foundItem">{{ foundItem.id }}: {{ foundItem.Category }} - {{ foundItem.Manufacturer }} - Age: {{ foundItem.age }} months</li>
+            <li v-else>No item found</li>
+        </ul>
+    </div>
 </template>
 
+
+
 <script>
-const consoleOutput = window.consoleOutput || {};
-// To use Html5QrcodeScanner (more info below)
+import jsonData from './inventory-details.json';
 import {Html5QrcodeScanner} from "html5-qrcode";
-import jsonData from "./inventory-details.json";
+
+
 
 export default {
     data() {
@@ -22,21 +27,15 @@ export default {
     created() {
         const searchId = this.getSearchId();
         this.foundItem = jsonData.data.find(item => item.id === searchId);
-        console.log(this.foundItem)
     },
-    mounted(){
-        const script = document.createElement('script')
-        script.src = './clientConsole.js'
-        document.head.appendChild(script)
-    };
+
     methods: {
         getSearchId() {
             // 假设这里是某个函数返回的searchId值
-            return "UNG6300";
+            return "UNG145374";
         }
     }
 };
-
 
 function onScanSuccess(decodedText, decodedResult) {
     // handle the scanned code as you like, for example:
@@ -53,14 +52,13 @@ function onScanFailure(error) {
     console.warn(`Code scan error = ${error}`);
 }
 
-
 if (process.client){
     let html5QrcodeScanner = new Html5QrcodeScanner(
         "reader",
         { fps: 10, qrbox: {width: 250, height: 250} },
         /* verbose= */ false);
     html5QrcodeScanner.render(onScanSuccess, onScanFailure);
-
 }
+
 
 </script>
