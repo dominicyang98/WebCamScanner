@@ -1,31 +1,13 @@
 <template>
     <div id="header" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST</div>
+    <div id="result"> Details:
+        <li v-if="foundItem">{{ foundItem.Category }} - {{ foundItem.Manufacturer}} </li>
+        <li v-else> Item not found </li></div>
     <div id="reader" width="600px"></div>
-    <div>
-        <p>Details:</p>
-        <ul>
-            <li v-if="foundItem">{{ foundItem.Category }} - {{ foundItem.Manufacturer}} </li>
-            <li v-else> Item not found </li>
-        </ul>
-    </div>
-
 </template>
 
 <script>
-
 const consoleOutput = window.consoleOutput || {};
-
-var message = 'This is a unique message.';
-
-
-
-export default {
-    mounted(){
-        const script = document.createElement('script')
-        script.src = './clientConsole.js'
-        document.head.appendChild(script)
-    }
-}
 // To use Html5QrcodeScanner (more info below)
 import {Html5QrcodeScanner} from "html5-qrcode";
 import jsonData from "./inventory-details.json";
@@ -41,6 +23,11 @@ export default {
         this.foundItem = jsonData.data.find(item => item.id === searchId);
         console.log(this.foundItem)
     },
+    mounted(){
+        const script = document.createElement('script')
+        script.src = './clientConsole.js'
+        document.head.appendChild(script)
+    };
     methods: {
         getSearchId() {
             // 假设这里是某个函数返回的searchId值
@@ -50,14 +37,12 @@ export default {
 };
 
 
-async function onScanSuccess(decodedText, decodedResult) {
+function onScanSuccess(decodedText, decodedResult) {
     // handle the scanned code as you like, for example:
     if (!consoleOutput[message]) {
         message = decodedResult;
         consoleOutput[message] = true;
         console.log(`Code matched = ${decodedText}`, message);
-        this.targetObject = await findInfoDetails(message);
-        console.log(this.targetObject);
     }
 }
 
@@ -67,20 +52,8 @@ function onScanFailure(error) {
     console.warn(`Code scan error = ${error}`);
 }
 
-async function findInfoDetails(id) {
-    try {
-        const response = await this.$axios.$get('/inventory-details.json')
-        const targetObject = response.find(obj => obj.id === id);
-        return targetObject;
-    } catch (error) {
-        console.error(error)
-        return null;
-    }
-}
-
 
 if (process.client){
-
     let html5QrcodeScanner = new Html5QrcodeScanner(
         "reader",
         { fps: 10, qrbox: {width: 250, height: 250} },
