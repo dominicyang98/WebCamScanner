@@ -32,6 +32,7 @@ export default {
     created() {
         const searchId = this.getSearchId();
         this.foundItem = jsonData.data.find(item => item.id === searchId);
+        console.log(this.foundItem)
     },
     methods: {
         getSearchId() {
@@ -41,7 +42,7 @@ export default {
     }
 };
 
-console.log(item)
+
 
 </script>
 
