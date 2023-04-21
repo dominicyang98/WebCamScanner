@@ -43,9 +43,6 @@ export default {
 };
 
 
-
-</script>
-
 async function onScanSuccess(decodedText, decodedResult) {
     // handle the scanned code as you like, for example:
     if (!consoleOutput[message]) {
