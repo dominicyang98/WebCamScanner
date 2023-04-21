@@ -1,5 +1,5 @@
 <template>
-    <div id="header" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST</div>
+    <div id="header" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST111</div>
     <div id="header1" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST1</div>
     <!-- <div id="result"> Details:
         <li v-if="foundItem">{{ foundItem.Category }} - {{ foundItem.Manufacturer}} </li>
