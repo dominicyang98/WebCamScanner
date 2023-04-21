@@ -40,6 +40,9 @@ export default {
         }
     }
 };
+
+console.log(item)
+
 </script>
 
 async function onScanSuccess(decodedText, decodedResult) {
