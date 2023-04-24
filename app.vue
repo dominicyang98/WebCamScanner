@@ -42,7 +42,8 @@ function onScanSuccess(decodedText, decodedResult) {
     if (!consoleOutput[message]) {
         message = decodedResult;
         consoleOutput[message] = true;
-        console.log(`Code matched = ${decodedText}`, message);
+        console.log(message)
+        //console.log(`Code matched = ${decodedText}`, message);
     }
 }
 
