@@ -40,6 +40,7 @@ export default {
             this.searchID = this.inputID;
             // 假设这里是某个函数返回的searchId值
             return this.searchID;
+            console.log(this.searchID)
         }
     }
 };
