@@ -1,6 +1,10 @@
 <template>
     <div id="header" style="background-color:lightblue; text-align:center ;">QR CODE SCANNER TEST</div>
     <div id="reader" width="400px"></div>
+    <div>
+        <input v-model="inputID" type="text" />
+        <button @click="manuallysetID">Confirm</button>
+    </div>
     <div id="result" style="background-color:lightblue; text-align:center ;">
         <p>Item found:</p>
         <ul>
@@ -21,6 +25,8 @@ import {Html5QrcodeScanner} from "html5-qrcode";
 export default {
     data() {
         return {
+            inputID: '',
+            searchID: '',
             foundItem: null
         };
     },
@@ -31,8 +37,9 @@ export default {
 
     methods: {
         getSearchId() {
+            this.searchID = this.inputID;
             // 假设这里是某个函数返回的searchId值
-            return "UNG145374";
+            return this.searchID;
         }
     }
 };
